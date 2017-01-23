@@ -4,6 +4,12 @@ for Ubuntu 16.04 64bit, GTX 970
 
 17.01.23
 
+##Reference
+
+1. http://luke77.tistory.com/44
+
+2. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md#test-the-tensorflow-installation
+
 ###Graphic driver update
 
     sudo add-apt-repository ppa:graphics-drivers/ppa 
@@ -67,3 +73,59 @@ Go to https://developer.nvidia.com/cudnn
     sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
 
 ###Tensorflow
+
+1. Bazel
+
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update
+    sudo apt-get install oracle-java8-installer
+
+    sudo apt-get install pkg-config zip g++ zlib1g-dev unzip
+
+Go to https://github.com/bazelbuild/bazel/releases
+
+    chmod +x bazelxxxxxxx-installer-linux-x86_64.sh
+    ./bazelxxxxxxx-installer-linux-x86_64.sh --user
+
+    vi ~/.bashrc
+    export PATH="$PATH:$HOME/bin"
+
+2. Numpy
+
+    sudo apt-get install python-numpy swig python-dev
+
+3. Tensorflow
+
+    git clone --recurse-submodules https://github.com/tensorflow/tensorflow
+
+    cd ~/tensorflow
+    ./configure
+
+    Please specify the location of python. - Enter (default)
+    Do you with to build TensorFlow with Google Cloud Platform support? N
+    Do you wish to build TensorFlow with GPU support? y
+    Please specify which gcc should be used by nvcc as the host complier. : /usr/bin/gcc-4.8
+    Please specify the Cuda SDK version you want to use: 7.5
+    Please specify the location where CUDA 7.5 toolkit is installed. Refer to README.md for more details. : Enter (default)
+    Please specify the Cudnn version you want to use. : 4
+    Please specify the location where cuDNN 4.0 library is installed. Refer to README.md for more details. : Enter (default)
+    Please note that each additional compute capability significantly increases your build time and binary size. : 3.5
+
+- Compile tensorflow
+
+    bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+
+    bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+
+- install tensorflow to Anaconda
+
+    pip install /tmp/tensorflow_pkg/tensorflow-0.9.0-py2-none-any.whl
+
+- OR,
+
+#### Ubuntu/Linux 64-bit, GPU enabled, Python 2.7
+#### Requires CUDA toolkit 8.0 and CuDNN v5.1. For other versions, see "Installing from sources" below.
+    
+    $ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.1-cp27-none-linux_x86_64.whl
+
+    $ pip install --upgrade $TF_BINARY_URL
