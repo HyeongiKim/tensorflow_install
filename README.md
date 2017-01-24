@@ -11,10 +11,10 @@ for Ubuntu 16.04 64bit, GTX 970
 2. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md#test-the-tensorflow-installation
 
 ###Graphic driver update
-
-    sudo add-apt-repository ppa:graphics-drivers/ppa 
-    sudo apt update
-
+```
+sudo add-apt-repository ppa:graphics-drivers/ppa 
+sudo apt update
+```
 System settings>Software&Updates>Additional Drivers tab
 
 Re-boot
@@ -24,9 +24,9 @@ Re-boot
 Go to https://www.continuum.io/downloads
 
 Downloads 'Anaconda for Linux Python 2.7 Linux 64-bit'
-
-    bash Anaconda2-4.1.1-Linux-x86_64.sh
-
+```
+bash Anaconda2-4.1.1-Linux-x86_64.sh
+```
 Reboot terminal
 
 Test as python> import matplotlib
@@ -36,9 +36,9 @@ Test as python> import matplotlib
 Go to https://developer.nvidia.com/cuda-downloads (for Linux runfile(local))
 
 Install additional packages
-
+```
     sudo apt-get install nvidia-modprobe freeglut3-dev libx11-dev libxmu-dev libxi-dev libglu1-mesa-dev
-
+```
 Install CUDA
 
 - EULA 동의 : accept
@@ -51,26 +51,27 @@ Install CUDA
     - Enter CUDA Samples Location : Enter (default)
 
 - Move to home (cd ~)
-
-    vi ~/.bashrc
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64"
-    export CUDA_HOME=/usr/local/cuda
-
+```
+vi ~/.bashrc
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64"
+export CUDA_HOME=/usr/local/cuda
+```
 ### CUDNN
 
 Go to https://developer.nvidia.com/cudnn 
 
 - Move to
-
-    sudo nautilus
-
+```
+sudo nautilus
+```
 - copy files cuda/include
 
 - copy files cuda/lib64
 
 - setup
-
-    sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
+```
+sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
+```
 
 ###Tensorflow
 
