@@ -1,16 +1,16 @@
-#Tensorflow Installation Guide
+# Tensorflow Installation Guide
 
 for Ubuntu 16.04 64bit, GTX 970
 
 17.01.23
 
-##Reference
+## Reference
 
 1. http://luke77.tistory.com/44
 
 2. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md#test-the-tensorflow-installation
 
-###Graphic driver update
+### Graphic driver update
 ```
 sudo add-apt-repository ppa:graphics-drivers/ppa 
 sudo apt update
@@ -19,7 +19,7 @@ System settings>Software&Updates>Additional Drivers tab
 
 Re-boot
 
-###Anaconda
+### Anaconda
 
 Go to https://www.continuum.io/downloads
 
@@ -31,7 +31,7 @@ Reboot terminal
 
 Test as python> import matplotlib
 
-###CUDA Toolkit
+### CUDA Toolkit
 
 Go to https://developer.nvidia.com/cuda-downloads (for Linux runfile(local))
 
@@ -73,7 +73,7 @@ sudo nautilus
 sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
 ```
 
-###Tensorflow
+### Tensorflow
 
 1. Numpy
 
